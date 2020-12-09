@@ -1,0 +1,172 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01KNBTI7YC6NH7dqvyzadwECQWbCsS7fX17",
+    "name": "GOOGLE MAPS - Get Coordinates by Address",
+    "title": "GOOGLE MAPS - Get Coordinates by Address",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Address",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KNBUXXM9BA9558WuE2ARrEHOTh0xoMNNo",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Location Details",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KNC38QAV3W46FAUnuIlk11hZ35CWAY0Xi",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "API Key",
+          "type": "datatype.secure_string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KNCAAQ3FRJJ0dAWMziO8HARANQ6Iql2Vm",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Google Maps",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "This WF takes an address as an input and provides coordinates in lat/lng format and place id.\n\nMore information about Google Map Geolocation API: https://developers.google.com/maps/documentation/geocoding/overview",
+      "display_name": "GOOGLE MAPS - Get Coordinates by Address",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01KNBUE5RBGFS3NVOetmfjsir5H64IF5buY",
+        "name": "HTTP Request",
+        "title": "Get coordinates by address",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "Get coordinates by address",
+          "method": "GET",
+          "relative_url": "geocode/json?address=$workflow.definition_workflow_01KNBTI7YC6NH7dqvyzadwECQWbCsS7fX17.input.variable_workflow_01KNBUXXM9BA9558WuE2ARrEHOTh0xoMNNo$\u0026key=$workflow.definition_workflow_01KNBTI7YC6NH7dqvyzadwECQWbCsS7fX17.input.variable_workflow_01KNCAAQ3FRJJ0dAWMziO8HARANQ6Iql2Vm$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KNC19QVFL475UL17VVXb7nJb9pWKx7HGT",
+        "name": "Condition Block",
+        "title": "Did we get a result?",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Did we get a result?",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01KNC19Y79OMB023MENDjLM9YmM5rEtG2YY",
+            "name": "Condition Branch",
+            "title": "No",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01KNBUE5RBGFS3NVOetmfjsir5H64IF5buY.output.status_code$",
+                "operator": "ne",
+                "right_operand": 200
+              },
+              "continue_on_failure": false,
+              "display_name": "No",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KNC21U42B7Q2Mq4vxHIcCwxkC5p98D3Vc",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "failed-completed",
+                  "continue_on_failure": false,
+                  "display_name": "Completed",
+                  "result_message": "Failed to fetch results\n\nHTTP Code: $activity.definition_activity_01KNBUE5RBGFS3NVOetmfjsir5H64IF5buY.output.status_code$\n\nResponse Body: $activity.definition_activity_01KNBUE5RBGFS3NVOetmfjsir5H64IF5buY.output.response_body$",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01KNC3D38YD7G20tHgsOQr6bvKxi89vKfo2",
+        "name": "Set Variables",
+        "title": "Set output variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set output variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01KNBTI7YC6NH7dqvyzadwECQWbCsS7fX17.output.variable_workflow_01KNC38QAV3W46FAUnuIlk11hZ35CWAY0Xi$",
+              "variable_value_new": "$activity.definition_activity_01KNBUE5RBGFS3NVOetmfjsir5H64IF5buY.output.response_body$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
