@@ -1,0 +1,279 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu",
+    "name": "Webex Teams - Post Card to Teams Space",
+    "title": "Webex Teams - Post Card to Teams Space",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Webex Token",
+          "type": "datatype.secure_string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KQIKL2Y8YXT13WiqBM2NuH5yMvJmLvml9",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Response Body",
+          "type": "datatype.string",
+          "description": "Webex Teams API call response body.",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KQJJE1XYQT63o6Y1pRVzDZsy7gjVcpAz0",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Adaptive Card JSON",
+          "type": "datatype.string",
+          "description": "Content attachment to attach to the message. Only one card per message is supported",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KQIL2V83T687c9qkZiKsjld1YlDUryfjw",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Plain Text",
+          "type": "datatype.string",
+          "description": "The message cannot have this field as emply. Provide text to go with the card.",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KQIPH0QG5GL72uMayP9uzR62sNTgnZvSC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Room ID",
+          "type": "datatype.string",
+          "is_required": true,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KQIOW22XUD77cXOqi8vw02h2GGXfLj7MM",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Cisco Webex Teams",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "Posts a message with an Adaptive Card to a Webex Teams room.\n\nWebex Team documentation on creating Cards:\nhttps://developer.webex.com/docs/api/guides/cards",
+      "display_name": "Webex Teams - Post Card to Teams Space",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01KQJ37TLGQEW1rkU4wiZA8psWRXr0tYSdR",
+        "name": "Condition Block",
+        "title": "Was the Card provided?",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Was the Card provided?",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01KQJ3818T5NS6f1ExZMaPBz2A8IhwHjIdS",
+            "name": "Condition Branch",
+            "title": "No",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu.input.variable_workflow_01KQIL2V83T687c9qkZiKsjld1YlDUryfjw$",
+                "operator": "eq",
+                "right_operand": ""
+              },
+              "continue_on_failure": false,
+              "display_name": "No",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KQJ3RL1V81Q0g5wDoMEyjGnCxye5swHJM",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "failed-completed",
+                  "continue_on_failure": false,
+                  "display_name": "Completed",
+                  "result_message": "Adaptive Card JSON input variable is emply.",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01KQJ45MAHM0H7dWuvCrl47wjIZQlYB6KGH",
+        "name": "HTTP Request",
+        "title": "Post Message",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"roomId\": \"$workflow.definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu.input.variable_workflow_01KQIOW22XUD77cXOqi8vw02h2GGXfLj7MM$\",\n  \"text\": \"$workflow.definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu.input.variable_workflow_01KQIPH0QG5GL72uMayP9uzR62sNTgnZvSC$\",\n  \"attachments\": [\n      {\n      \"contentType\": \"application/vnd.microsoft.card.adaptive\",\n      \"content\":$workflow.definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu.input.variable_workflow_01KQIL2V83T687c9qkZiKsjld1YlDUryfjw$\n      }\n   ]\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": true,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu.input.variable_workflow_01KQIKL2Y8YXT13WiqBM2NuH5yMvJmLvml9$"
+            }
+          ],
+          "display_name": "Post Message",
+          "method": "POST",
+          "relative_url": "/v1/messages",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KQJGB1PQI9B6B0EtVNZmigCfkd9vEaQWD",
+        "name": "Condition Block",
+        "title": "Was the request successful?",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Was the request successful?",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01KQJGBA7FZOP4NkbyQl7OtUWIPRAyBxa5x",
+            "name": "Condition Branch",
+            "title": "Yes/200",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01KQJ45MAHM0H7dWuvCrl47wjIZQlYB6KGH.output.status_code$",
+                "operator": "eq",
+                "right_operand": 200
+              },
+              "continue_on_failure": false,
+              "display_name": "Yes/200",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KQJKA3TFOOH0sHjgwgOdmcjuz6QmfpMUG",
+                "name": "Set Variables",
+                "title": "Set Output Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Output Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu.output.variable_workflow_01KQJJE1XYQT63o6Y1pRVzDZsy7gjVcpAz0$",
+                      "variable_value_new": "$activity.definition_activity_01KQJ45MAHM0H7dWuvCrl47wjIZQlYB6KGH.output.response_body$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01KQJGBBBIFNP322MEo4cBdg72kVCA41dDk",
+            "name": "Condition Branch",
+            "title": "Failed",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01KQJ45MAHM0H7dWuvCrl47wjIZQlYB6KGH.output.status_code$",
+                "operator": "ne",
+                "right_operand": 200
+              },
+              "continue_on_failure": false,
+              "display_name": "Failed",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KQJM4WU5WN67U4XNI4h0aRpySzQmUsEae",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "failed-completed",
+                  "continue_on_failure": false,
+                  "display_name": "Completed",
+                  "result_message": "Failed to post Webex Teams message:\n\nStatus code: $activity.definition_activity_01KQJ45MAHM0H7dWuvCrl47wjIZQlYB6KGH.output.status_code$\nError message: $activity.definition_activity_01KQJ45MAHM0H7dWuvCrl47wjIZQlYB6KGH.output.response_body$",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
