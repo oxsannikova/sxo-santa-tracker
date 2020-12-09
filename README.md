@@ -12,3 +12,5 @@ Steps:
 - Fetch Santa's Route
 - Loop through each stop and get destination between Santa's stop and input location
 - If the distance has been calculated and it is less than 100 km, post a card to Webex Teams with Santa's location details.
+
+Review Google Maps API the [authentication requirements](https://developers.google.com/maps/documentation/geocoding/get-api-key) (you need an API key) and the API [usage and billing information](https://developers.google.com/maps/documentation/geocoding/usage-and-billing) (you need to enable billing on your project).
