@@ -1,0 +1,575 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz",
+    "name": "Create Santa's Card",
+    "title": "Create Santa's Card",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Weather Temp C",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPXR0KOH6EB17BbP36sXVUanswRvV9Po1",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Arrival Date and Time",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPWYNI7E2R52FPUZDjCqbyrX5gCsjskGP",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Region",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPWYBP654SX42fVKhKtPFLd36BxAMCf3g",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "City",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPWY6J3DOXO2zTnCCTfmDW21GDOKYgoUB",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Details",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPWZVPV0OGW0HELO7Wdz5Z3M3HQKsAy2P",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Presents Delivered",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPWYZ0SUP8O3KPI2QeZik4XBvzjZaEJFI",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Photo URL",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPXQJT2VTPO6OaLxXh2mrHzEaoXjrhH14",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "WxT Cart JSON",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPX0APMMAMU5ivxz0xRLe7OeLtWlM1IU9",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Departure Date and Time",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPWYT4YXM0Y0OCE52Cm5g5OJlPDgmgj8J",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Weather Temp F",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPXR3QCIPWJ0iRgvaweXPW0NK34snnQa9",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Weather URL",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KPXQTOIJVYP2IsZ8UsMrTyM2j1vIW2CI3",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Santa",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "This atomic contructs Webex Teams Card JSON structure with information about Santa's Last Stop.",
+      "display_name": "Create Santa's Card",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01KPXN9NVF81K0zso3B8qo87Go1m6UZ9Csg",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01KPXNA2N4GVJ04AkNfzpJBnf0GCn2im3Xe",
+            "name": "Parallel Branch",
+            "title": "Photo URL",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Photo URL",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KPX0QYFCJBY2boEdGXaDem6MZxa5iqnZz",
+                "name": "JSONPath Query",
+                "title": "Get Photo URL",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Get Photo URL",
+                  "input_json": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWZVPV0OGW0HELO7Wdz5Z3M3HQKsAy2P$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.photos[0].url",
+                      "jsonpath_query_name": "photo_url",
+                      "jsonpath_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01KPXPIIJ7C3G1A3bRj5wWBtV7KOgkTYGzU",
+                "name": "Condition Block",
+                "title": "Got the Value?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Got the Value?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01KPXPIQF2B0N5QPRQB0yjjdHdYj3dVnOoq",
+                    "name": "Condition Branch",
+                    "title": "Condition Branch",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01KPX0QYFCJBY2boEdGXaDem6MZxa5iqnZz.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Condition Branch",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01KPXR8O2C2E7029BvmE5ZjFyamnpCfHhZ1",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.local.variable_workflow_01KPXQJT2VTPO6OaLxXh2mrHzEaoXjrhH14$",
+                              "variable_value_new": "$activity.definition_activity_01KPX0QYFCJBY2boEdGXaDem6MZxa5iqnZz.output.jsonpath_queries.photo_url$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01KPXNA3SG5XL3VoMkOXtAph5YywY4yfkx3",
+            "name": "Parallel Branch",
+            "title": "Wheatehr URL",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Wheatehr URL",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KPXNLZPQ7394VvhmRP9ghJ4LtO1sGsV1f",
+                "name": "JSONPath Query",
+                "title": "Get Weather URL",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Get Weather URL",
+                  "input_json": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWZVPV0OGW0HELO7Wdz5Z3M3HQKsAy2P$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.weather.url",
+                      "jsonpath_query_name": "wiki_url",
+                      "jsonpath_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01KPXRPO1T6DD60xow8KxCWlHSMcQEk2saP",
+                "name": "Condition Block",
+                "title": "Got the Value?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Got the Value?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01KPXRPW7KZ1M0nfBPEh2cKR3Raat1YOJby",
+                    "name": "Condition Branch",
+                    "title": "Condition Branch",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01KPXNLZPQ7394VvhmRP9ghJ4LtO1sGsV1f.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Condition Branch",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01KPXRPX9C9ZX0HC0DAAvcPZOkJ25kT5yQt",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.local.variable_workflow_01KPXQTOIJVYP2IsZ8UsMrTyM2j1vIW2CI3$",
+                              "variable_value_new": "$activity.definition_activity_01KPXNLZPQ7394VvhmRP9ghJ4LtO1sGsV1f.output.jsonpath_queries.wiki_url$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01KPXNG3N2D7E6DIak3ueWxX3O1omPN2bmN",
+            "name": "Parallel Branch",
+            "title": "Temp C",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Temp C",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KPXNPMXF3CX61RD8eDMw0HH4Px8xHSdx8",
+                "name": "JSONPath Query",
+                "title": "Get Weather Temp C",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Get Weather Temp C",
+                  "input_json": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWZVPV0OGW0HELO7Wdz5Z3M3HQKsAy2P$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.weather.tempC",
+                      "jsonpath_query_name": "tempC",
+                      "jsonpath_query_type": "number"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01KQIF9LG4NUD2ZaI9XcGhEar8uJVnTPrA0",
+                "name": "Condition Block",
+                "title": "Got the Value?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Got the Value?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01KQIF9TFCZOI64kjtewmrkSCk0qJ1njaHB",
+                    "name": "Condition Branch",
+                    "title": "Condition Branch",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01KPXNPMXF3CX61RD8eDMw0HH4Px8xHSdx8.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Condition Branch",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01KQIF9UG263V5UZu9yLt42VerAiGbCTRbV",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.local.variable_workflow_01KPXR0KOH6EB17BbP36sXVUanswRvV9Po1$",
+                              "variable_value_new": "$activity.definition_activity_01KPXNPMXF3CX61RD8eDMw0HH4Px8xHSdx8.output.jsonpath_queries.tempC$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_01KPXNT3G8FV53ItZeXRTSjg9Y70bl7KhTx",
+            "name": "Parallel Branch",
+            "title": "Temp F",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Temp F",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KPXNT4YU25H2cgm8KyR10HhUfpyyjAVWL",
+                "name": "JSONPath Query",
+                "title": "Get Weather Temp F",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": true,
+                  "display_name": "Get Weather Temp F",
+                  "input_json": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWZVPV0OGW0HELO7Wdz5Z3M3HQKsAy2P$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.weather.tempF",
+                      "jsonpath_query_name": "tempF",
+                      "jsonpath_query_type": "number"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01KQIFTPTD6D23SHpKiySAXmAJYoZaHLCb1",
+                "name": "Condition Block",
+                "title": "Got the Value?",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Got the Value?",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01KQIFTX5LD5B1bNmKLeUXJKH8iLoxhTovI",
+                    "name": "Condition Branch",
+                    "title": "Condition Branch",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01KPXNT4YU25H2cgm8KyR10HhUfpyyjAVWL.output.succeeded$",
+                        "operator": "eq",
+                        "right_operand": true
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Condition Branch",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01KQIFTY7BJPJ5jjF43apeSfUIOh5hjWKtK",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.local.variable_workflow_01KPXR3QCIPWJ0iRgvaweXPW0NK34snnQa9$",
+                              "variable_value_new": "$activity.definition_activity_01KPXNT4YU25H2cgm8KyR10HhUfpyyjAVWL.output.jsonpath_queries.tempF$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01KPXBA0YNTLQ2sMrMQlkLnUoVloC3lANAM",
+        "name": "Set Variables",
+        "title": "Create Cart JSON",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Create Cart JSON",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.output.variable_workflow_01KPX0APMMAMU5ivxz0xRLe7OeLtWlM1IU9$",
+              "variable_value_new": "{\n\"type\": \"AdaptiveCard\",\n\"version\": \"1.0\",\n\"body\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"Santa's Last Stop:\",\n\"size\": \"Large\",\n\"color\": \"Accent\",\n\"weight\": \"Bolder\"\n},\n{\n\"type\": \"ColumnSet\",\n\"columns\": [\n{\n\"type\": \"Column\",\n\"width\": \"auto\",\n\"items\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"Arrival : $workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWYNI7E2R52FPUZDjCqbyrX5gCsjskGP$\",\n\"spacing\": \"None\",\n\"horizontalAlignment\": \"Left\",\n\"wrap\": true,\n\"weight\": \"Bolder\"\n}\n],\n\"horizontalAlignment\": \"Left\"\n}\n]\n},\n{\n\"type\": \"ColumnSet\",\n\"columns\": [\n{\n\"type\": \"Column\",\n\"width\": \"auto\",\n\"items\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"Departure : $workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWYT4YXM0Y0OCE52Cm5g5OJlPDgmgj8J$\",\n\"spacing\": \"None\",\n\"horizontalAlignment\": \"Left\",\n\"wrap\": true,\n\"weight\": \"Bolder\"\n}\n],\n\"horizontalAlignment\": \"Left\"\n}\n]\n},\n{\n\"type\": \"ColumnSet\",\n\"columns\": [\n{\n\"type\": \"Column\",\n\"width\": \"stretch\",\n\"items\": [\n{\n\"type\": \"ColumnSet\",\n\"columns\": [\n{\n\"type\": \"Column\",\n\"width\": \"stretch\",\n\"items\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"City: $workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWY6J3DOXO2zTnCCTfmDW21GDOKYgoUB$\",\n\"color\": \"Accent\",\n\"weight\": \"Bolder\"\n}\n]\n},\n{\n\"type\": \"Column\",\n\"width\": \"stretch\",\n\"items\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"Region: $workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWYBP654SX42fVKhKtPFLd36BxAMCf3g$\",\n\"color\": \"Accent\",\n\"weight\": \"Bolder\"\n}\n]\n}\n]\n}\n]\n}\n]\n},\n{\n\"type\": \"TextBlock\",\n\"text\": \"Weather Conditions:  $workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.local.variable_workflow_01KPXR0KOH6EB17BbP36sXVUanswRvV9Po1$ C    $workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.local.variable_workflow_01KPXR3QCIPWJ0iRgvaweXPW0NK34snnQa9$ F\",\n\"weight\": \"Bolder\"\n},\n{\n\"type\": \"ColumnSet\",\n\"columns\": [\n{\n\"type\": \"Column\",\n\"width\": \"auto\",\n\"items\": [\n{\n\"type\": \"Image\",\n\"altText\": \"\",\n\"url\": \"https://developer.webex.com/images/link-icon.png\",\n\"horizontalAlignment\": \"Left\",\n\"width\": \"1px\",\n\"size\": \"Small\"\n}\n]\n},\n{\n\"type\": \"Column\",\n\"width\": \"stretch\",\n\"items\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"[Picture]($workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.local.variable_workflow_01KPXQJT2VTPO6OaLxXh2mrHzEaoXjrhH14$)\",\n\"horizontalAlignment\": \"Left\",\n\"size\": \"Medium\",\n\"weight\": \"Bolder\"\n}\n],\n\"horizontalAlignment\": \"Left\"\n}\n]\n},\n{\n\"type\": \"ColumnSet\",\n\"columns\": [\n{\n\"type\": \"Column\",\n\"width\": \"stretch\",\n\"items\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"Presents Delivered:\",\n\"weight\": \"Bolder\"\n}\n]\n},\n{\n\"type\": \"Column\",\n\"width\": \"stretch\",\n\"items\": [\n{\n\"type\": \"TextBlock\",\n\"text\": \"$workflow.definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz.input.variable_workflow_01KPWYZ0SUP8O3KPI2QeZik4XBvzjZaEJFI$\"\n}\n]\n}\n]\n}\n],\n\"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n\"lang\": \"eng\"\n}"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
