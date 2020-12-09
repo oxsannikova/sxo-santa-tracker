@@ -326,7 +326,7 @@
               {
                 "unique_name": "definition_activity_01KRDZS8DJNJ213RY4vShsBU8sIOq0kcoc2",
                 "name": "Condition Branch",
-                "title": "Condition Branch",
+                "title": "No",
                 "type": "logic.condition_block",
                 "base_type": "activity",
                 "properties": {
@@ -336,7 +336,7 @@
                     "right_operand": true
                   },
                   "continue_on_failure": false,
-                  "display_name": "Condition Branch",
+                  "display_name": "No",
                   "skip_execution": false
                 },
                 "object_type": "definition_activity",
@@ -375,7 +375,7 @@
               {
                 "unique_name": "definition_activity_01KRDXK8DC7KS5No2SO1JfkXEooelSXzZek",
                 "name": "Condition Branch",
-                "title": "Condition Branch",
+                "title": "Yes",
                 "type": "logic.condition_block",
                 "base_type": "activity",
                 "properties": {
@@ -385,7 +385,7 @@
                     "right_operand": 100000
                   },
                   "continue_on_failure": false,
-                  "display_name": "Condition Branch",
+                  "display_name": "Yes",
                   "skip_execution": false
                 },
                 "object_type": "definition_activity",
@@ -557,10 +557,10 @@
     }
   },
   "atomic_workflows": [
-    "definition_workflow_01KNCBWF78G956douxhtSnLkLNUSOTaKX2T",
     "definition_workflow_01KNBTI7YC6NH7dqvyzadwECQWbCsS7fX17",
-    "definition_workflow_01KRDHB5YFVGW0R4NzuUqM1wjKGLEm0EEJG",
+    "definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu",
+    "definition_workflow_01KNCBWF78G956douxhtSnLkLNUSOTaKX2T",
     "definition_workflow_01KPWWD26GHVV11y2MJLJRNC8P1irAc9JMz",
-    "definition_workflow_01KQIJVBXF9R05Xwu2gBNWxMmXYrGSoOuhu"
+    "definition_workflow_01KRDHB5YFVGW0R4NzuUqM1wjKGLEm0EEJG"
   ]
 }
