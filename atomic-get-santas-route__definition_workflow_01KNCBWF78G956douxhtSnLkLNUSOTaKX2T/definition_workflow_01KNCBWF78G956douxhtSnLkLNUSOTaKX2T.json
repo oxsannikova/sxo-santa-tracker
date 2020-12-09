@@ -1,0 +1,145 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01KNCBWF78G956douxhtSnLkLNUSOTaKX2T",
+    "name": "GOOGLE MAPS - Get Santa's Route",
+    "title": "GOOGLE MAPS - Get Santa's Route",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Response Body",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01KNDA3T6BL5G0IANrYTflneXMrnqMEtqwy",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "atomic_group": "Google Maps",
+        "is_atomic": true
+      },
+      "delete_workflow_instance": false,
+      "description": "Fetch Santa's route information in JSON format from secret Google API.\n\nMore information about this API:\nhttps://firebasestorage.googleapis.com/v0/b/santa-tracker-firebase.appspot.com/o/route%2Fsanta_en.json?alt=media\u00262020b",
+      "display_name": "GOOGLE MAPS - Get Santa's Route",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01KNCF049LV107It3m65IDbsk7vCAxwRvbV",
+        "name": "HTTP Request",
+        "title": "Get Santa's Route",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "Get Santa's Route",
+          "method": "GET",
+          "relative_url": "b/santa-tracker-firebase.appspot.com/o/route%2Fsanta_en.json?alt=media\u00262020b",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01KNCO8TTBPT46QQuT0UiX9SjckMpLZ5jk3",
+        "name": "Condition Block",
+        "title": "Did we get a result?",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Did we get a result?",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01KNCO91WJJOF5jsP7PL9bf1ek4ilRw3qkz",
+            "name": "Condition Branch",
+            "title": "No",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01KNCF049LV107It3m65IDbsk7vCAxwRvbV.output.status_code$",
+                "operator": "ne",
+                "right_operand": 200
+              },
+              "continue_on_failure": false,
+              "display_name": "No",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01KNCOU9QSRNQ0K1aOnBVML01Tha2O6OYTx",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "failed-completed",
+                  "continue_on_failure": false,
+                  "display_name": "Completed",
+                  "result_message": "Failed to fetch results\n\nHTTP  Code: $activity.definition_activity_01KNCF049LV107It3m65IDbsk7vCAxwRvbV.output.status_code$\nResponse Body: $activity.definition_activity_01KNCF049LV107It3m65IDbsk7vCAxwRvbV.output.response_body$",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01KND9MMND1QJ5nl9uewrMxceJPoGCp8KI9",
+        "name": "Set Variables",
+        "title": "Set Output Variable",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Output Variable",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01KNCBWF78G956douxhtSnLkLNUSOTaKX2T.output.variable_workflow_01KNDA3T6BL5G0IANrYTflneXMrnqMEtqwy$",
+              "variable_value_new": "$activity.definition_activity_01KNCF049LV107It3m65IDbsk7vCAxwRvbV.output.response_body$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  }
+}
