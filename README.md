@@ -2,6 +2,8 @@
 
 This SecureX Orchestration workflow will track Santa's route and notify you via Webex Teams when he gets close to your home.
 
+APIs Used: Google Maps Geolocation API, Google Maps Distance Matrix API, Google Places API, Webex Teams
+
 Target Group: Default Target Group
 
 Targets Used: GOOGLE MAPS API, Webex Teams
