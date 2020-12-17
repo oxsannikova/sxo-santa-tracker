@@ -2,8 +2,7 @@
 
 This SecureX Orchestration workflow will track Santa's route and notify you via Webex Teams when he gets close to your home.
 
-Here is the video overview:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FOnFrV35S6o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Here is the video overview: https://www.youtube.com/embed/FOnFrV35S6o
 
 ## APIs Used
 [Google Maps Geolocation API](https://developers.google.com/maps/documentation/geolocation/overview), [Google Maps Distance Matrix API, Google Places API](https://developers.google.com/maps/documentation/distance-matrix/overview), [Undocumented API with Santa's Route JSON file](https://storage.googleapis.com/santa/route-v1/santa_en.json), [Webex Teams API](https://developer.webex.com/)
