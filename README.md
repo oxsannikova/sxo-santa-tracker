@@ -115,15 +115,15 @@ Copy your personal Webex API Token or your Bots' API Token into the VALUE field.
 
 ![](/assets/action_pane.png)
 
-2. You will be prompted to provide input information.
+2. You will be prompted to provide input information which is your address.
 
-![](/assets/input_variables.png)
+![](/assets/input.png)
 
 3. Provide necessary information and click `RUN`.
 
 4.  Observe workflow execution.
 
-As the workflow progresses, you should see activities turning green. Don't be alarmed if some activities turn red, it is expected behavior.
+> As the workflow progresses, you should see activities turning green. Don't be alarmed if some activities turn red, it is expected behavior.
 
 5. Once execution is complete, examine the Webex Teams Room and Email Inbox for notifications and check if Threat Response Casebook has been created/updated in SecureX Ribbon.
 
