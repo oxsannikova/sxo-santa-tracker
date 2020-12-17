@@ -5,7 +5,10 @@ This SecureX Orchestration workflow will track Santa's route and notify you via 
 Here is the video overview: https://www.youtube.com/embed/FOnFrV35S6o
 
 ## APIs Used
-[Google Maps Geolocation API](https://developers.google.com/maps/documentation/geolocation/overview), [Google Maps Distance Matrix API, Google Places API](https://developers.google.com/maps/documentation/distance-matrix/overview), [Undocumented API with Santa's Route JSON file](https://storage.googleapis.com/santa/route-v1/santa_en.json), [Webex Teams API](https://developer.webex.com/)
+- [Google Maps Geolocation API](https://developers.google.com/maps/documentation/geolocation/overview)
+- [Google Maps Distance Matrix API, Google Places API](https://developers.google.com/maps/documentation/distance-matrix/overview)
+- [Undocumented API with Santa's Route JSON file](https://storage.googleapis.com/santa/route-v1/santa_en.json)
+- [Webex Teams API](https://developer.webex.com/)
 
 ## Target Group
 
@@ -54,10 +57,13 @@ RoomID bot is developed by Cisco to assist Developers with obtaining Room ID inf
 
 ![](/assets/room_id.png)
 
-In SecureX orchestration, choose in the menu on the left Variables -> Global Variables -> New Variable. 
-IMG
+In SecureX orchestration, choose in the menu on the left Variables -> Global Variables -> New Variable.
+
+![](/assets/variables.png)
+
 Create new variable of string type with a unique display name (e.g. "Santa Tracking Space"), paste Room ID as a value and click Submit.
-IMG
+
+![](/assets/new_variable.png)
 
 ### Step 3. Obtain Webex Teams API Token
 
@@ -71,13 +77,20 @@ In order to send the Webex Teams messages, you have two options:
 ### Step 4. Import Atomic Workflows
 
 SXO workflow is represented by the file in JSON format, that contains definitions and description of all the activities, targets, variables and atomic workflows that are in use.
-In SecureX orchestration left hand-side menu, go to Workflows -> Atomic Actions -> Import -> Browse and import the atomic workflows. Import atomic workflows downloaded from this repository.
+In SecureX orchestration left hand-side menu, go to Workflows -> Atomic Actions -> Import -> Browse and import the atomic workflows.
+
+![](/assets/atomics.png)
+
+Import atomic workflows downloaded from this repository.
+
+![](/assets/import_wf.png)
+
 > You can either clone repository to your workstation using `git clone` command or simply copy and paste the content of it into the workflow import dialog box.
-IMG
 
 ### Step 5. Import the main workflow (Santa Tracker)
 
 In SecureX orchestration left hand-side menu, go to Workflows -> My Workflows -> Import -> Browse and import the workflow called __sxo-santa-tracker-workflow__.
+
 You will be presented with the following warning:
 
 ![](/assets/import_warning.png)
@@ -90,11 +103,7 @@ Don't get scared and click "Update" :)
 
 Copy your personal Webex API Token or your Bots' API Token into the VALUE field. This is Secure String variable and it will be stored securely in the SXO.
 
-5. You should see the new workflow being added to the list:
-
-![](/assets/import_in_progress.png)
-
-Click on the workflow even if it still shows as import in progress.
+5. You should see the new workflow being added to the list. Click on the workflow when import is complete.
 
 6. If import was successful, you should see zero warnings at the top of the workflow canvas.
 
@@ -118,4 +127,4 @@ As the workflow progresses, you should see activities turning green. Don't be al
 
 5. Once execution is complete, examine the Webex Teams Room and Email Inbox for notifications and check if Threat Response Casebook has been created/updated in SecureX Ribbon.
 
-> You can return to previous runs information by clicking `VIEW RUNS` inside the workflow or going to __Runs__ in the lefthand-side menu.
+> You can return to previous runs information by clicking `VIEW RUNS` inside the workflow or going to __Runs__ in the left hand-side menu.
